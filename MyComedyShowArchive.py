@@ -16,23 +16,37 @@ def create_database():
     conn = sqlite3.connect("MyArchive.sqlite")
     c = conn.cursor()
 
+    drop_shows_table_query = '''
+        DROP TABLE IF EXISTS shows
+    '''
+    c.execute(drop_shows_table_query)
+
     # Create the comedy_show table
     create_shows_table_query = '''
         CREATE TABLE IF NOT EXISTS shows (
-            show_id INTEGER PRIMARY KEY,
-            show_date DATE NOT NULL,
-            comedian_name TEXT NOT NULL,
-            audience_count INTEGER
+            Show INTEGER PRIMARY KEY,
+            Date DATE NOT NULL,
+            Year TEXT NOT NULL,
+            Quarter TEXT NOT NULL,
+            Venue TEXT NOT NULL,
+            Headliner TEXT NOT NULL,
+            Host TEXT NOT NULL,
+            Feature TEXT NOT NULL,
+            Appearances TEXT NOT NULL
         )
     '''
     c.execute(create_shows_table_query)
 
     # Insert the fake data into the comedy_show table
-    show_data = ('2023-08-24', 'John Smith', 150)
+    show_data = ('31', '05/20/2023','2022/2023', 'Spring', 'Embarcadero Hall',
+                 'Student Standup Show', 'Mateen Stewart', 'None', """Aryan Shukla,
+                  Benny Lamp, Caroline Murphy, Danny Pogue, Evan Sayer, Lucy Jones,
+                  Mark Asch, Rahul Sankar, Raj Oberoi, Raul Reynaga, Rick T. Zhang""")
 
     insert_show_query = '''
-        INSERT INTO shows (show_date, comedian_name, audience_count)
-        VALUES (?, ?, ?)
+        INSERT INTO shows (Show, Date, Year, Quarter, Venue, 
+        Headliner, Host, Feature, Appearances)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     '''
     c.execute(insert_show_query, show_data)
 
