@@ -51,9 +51,6 @@ def create_database():
 if __name__ == "__main__":
     create_database()
     print("MyArchive.sqlite database created with the comedy_show table and fake data.")
-    print("hi there")
-    #how does this even work
-    #what is this fr bruh
-    #please work
+    
 
 
