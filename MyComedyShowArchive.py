@@ -25,8 +25,7 @@ def create_database():
     create_shows_table_query = '''
         CREATE TABLE IF NOT EXISTS shows (
             Show INTEGER PRIMARY KEY,
-            Date DATE NOT NULL,
-            Year TEXT NOT NULL,
+            Date TEXT NOT NULL,
             Quarter TEXT NOT NULL,
             Venue TEXT NOT NULL,
             Headliner TEXT NOT NULL,
@@ -37,19 +36,20 @@ def create_database():
     '''
     c.execute(create_shows_table_query)
 
-    # Insert the fake data into the comedy_show table
-    show_data = ('31', '05/20/2023','2022/2023', 'Spring', 'Embarcadero Hall',
+    # Insert the data into the comedy_show table
+    show_data = ('31', '05/20/2023','Spring 2023', 'Embarcadero Hall',
                  'Student Standup Show', 'Mateen Stewart', 'None', """Aryan Shukla,
                   Benny Lamp, Caroline Murphy, Danny Pogue, Evan Sayer, Lucy Jones,
                   Mark Asch, Rahul Sankar, Raj Oberoi, Raul Reynaga, Rick T. Zhang""")
 
     insert_show_query = '''
-        INSERT INTO shows (Show, Date, Year, Quarter, Venue, 
+        INSERT INTO shows (Show, Date, Quarter, Venue, 
         Headliner, Host, Feature, Appearances)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     '''
     c.execute(insert_show_query, show_data)
 
+    # Print the shows table
     select_all_shows_query = '''
         SELECT * FROM shows
     '''
@@ -64,8 +64,9 @@ def create_database():
 
 if __name__ == "__main__":
     create_database()
-    print("MyArchive.sqlite database created with the comedy_show table and fake data.")
+    print("MyArchive.sqlite database created with the shows table and real data.")
     #newest version
     #trying something
+    #crudding
 
 
