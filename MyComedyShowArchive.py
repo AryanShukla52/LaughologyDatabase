@@ -36,7 +36,7 @@ def create_database():
     '''
     c.execute(create_shows_table_query)
 
-    # Insert the data into the comedy_show table
+    # Insert the initial data point into the comedy_show table
     show_data = ('31', '05/20/2023','Spring 2023', 'Embarcadero Hall',
                  'Student Standup Show', 'Mateen Stewart', 'None', """Aryan Shukla,
                   Benny Lamp, Caroline Murphy, Danny Pogue, Evan Sayer, Lucy Jones,
@@ -62,11 +62,28 @@ def create_database():
     conn.commit()
     conn.close()
 
+def fill_data():
+    conn = sqlite3.connect("MyArchive.sqlite")
+    c = conn.cursor()
+
+    # Insert the initial data point into the comedy_show table
+    insert_show_details_query = '''
+        INSERT INTO shows (Show, Date, Quarter, Venue, Headliner, Host, Feature, Appearances)
+        VALUES 
+            ('30', '5/13/23', 'Spring 2023', 'Embarcadero Hall', 'Asif Ali', 'Raj Oberoi', 'Milan Patel', 'Aryan Shukla, Raaghav Thatte, Rahul Sankar'),
+            ('29', '5/06/23', 'Spring 2023', 'Embarcadero Hall', 'Brandon Wardell', 'Jack Scotti', 'Rick Storer', 'Benny Lamp, Danny Pogue'),
+            ('28', '4/29/23', 'Spring 2023', 'Embarcadero Hall', 'Andrew Michaan', 'Adam Elder', 'Mikey Kampmann', 'Lucy Jones, Rick T. Zhang'),
+            ('27', '4/22/23', 'Spring 2023', 'Embarcadero Hall', 'Brent Pella', 'David Uhlfelder', 'Key Lewis', 'Jamal Ogans, Raul Reynaga'),
+            ('26', '4/15/23', 'Spring 2023', 'IV Theater', 'Steph Tolev', 'Jake Ciccone', 'Mateen Stewart', 'Aryan Shukla, Mark Asch'),
+            ('25', '5/13/23', 'Winter 2023', 'Embarcadero Hall', 'Joe Mande', 'Milan Patel', 'Aryan Shukla, Raaghav Thatte, Rahul Sankar'),
+            ('24', '5/13/23', 'Winter 2023', 'Embarcadero Hall', 'CCCCC', 'Milan Patel', 'Aryan Shukla, Raaghav Thatte, Rahul Sankar'),
+            ('23', '5/13/23', 'Winter 2023', 'Embarcadero Hall', 'Chase O'Donnell', 'Milan Patel', 'Aryan Shukla, Raaghav Thatte, Rahul Sankar'),
+            ('22', '5/13/23', 'Winter 2023', 'Embarcadero Hall', 'Brent Weinbach', 'Milan Patel', 'Aryan Shukla, Raaghav Thatte, Rahul Sankar'),
+            ('21', '5/13/23', 'Winter 2023', 'Embarcadero Hall', 'Jamie Wolf & Lucas Zelnick', 'jake Ciccone', 'None', 'Jamal Ogans and Raj Oberoi'),
+            '''
+
 if __name__ == "__main__":
     create_database()
-    print("MyArchive.sqlite database created with the shows table and real data.")
-    #newest version
-    #trying something
-    #crudding
+    #look up crud
 
 
