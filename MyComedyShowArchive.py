@@ -1,16 +1,5 @@
 import sqlite3
 
-# Function to generate fake data for comedy shows
-def generate_fake_data():
-    comedy_shows = [
-        ("The Comedy Club", "John Doe", "2022-05-15", "8:00 PM"),
-        ("Laugh Factory", "Jane Smith", "2022-06-20", "7:30 PM"),
-        ("Stand-Up Spectacular", "Mike Johnson", "2022-07-10", "9:00 PM"),
-        ("Comedy Central Live", "Emily Williams", "2022-08-05", "8:30 PM"),
-        ("Funny Frenzy", "David Lee", "2022-09-12", "7:00 PM")
-    ]
-    return comedy_shows
-
 # Create the database and table
 def create_database():
     conn = sqlite3.connect("MyArchive.sqlite")
@@ -21,7 +10,7 @@ def create_database():
     '''
     c.execute(drop_shows_table_query)
 
-    # Create the comedy_show table
+    # Create the shows table
     create_shows_table_query = '''
         CREATE TABLE IF NOT EXISTS shows (
             Show INTEGER PRIMARY KEY,
@@ -36,7 +25,7 @@ def create_database():
     '''
     c.execute(create_shows_table_query)
 
-    # Insert the initial data point into the comedy_show table
+    # Insert the initial data point into the shows table
     show_data = ('29', '5/20/23','Spring 2023', 'Embarcadero Hall',
                  'Student Standup Show', 'Mateen Stewart', 'None', """Aryan Shukla,
                   Benny Lamp, Caroline Murphy, Danny Pogue, Evan Sayer, Lucy Jones,
@@ -66,7 +55,7 @@ def fill_data():
     conn = sqlite3.connect("MyArchive.sqlite")
     c = conn.cursor()
 
-    # Insert the initial data point into the comedy_show table
+    # Insert the rest of the data points into the shows table
     insert_show_details_query = '''
         INSERT INTO shows (Show, Date, Quarter, Venue, Headliner, Host, Feature, Appearances)
         VALUES 
