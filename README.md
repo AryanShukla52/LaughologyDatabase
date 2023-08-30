@@ -3,7 +3,7 @@
 ### Background
 
 I joined Laughology, UCSB's premier stand-up comedy club, in the Winter Quarter of my Sophomore year (2023). 
-After weeks of helping promote our biweekly shows, attending our open mics, and even performing in several shows, I was appointed Treasurer of Laughology. Sifting through all the archival Google documents I gained access to, I realized the club did not have any proper records of the shows we had hosted this year or the years before. I sought to change that by creating a database featuring all the information I could find.
+After weeks of helping promote our biweekly shows, attending our open mics, and even performing in several shows, I was appointed Treasurer of Laughology. Sifting through all the archival Google documents I gained access to, I realized the club did not have any proper records of the shows we had hosted this year or the years before. I sought to change that by creating a database featuring all the information about the shows we hosted and the comedians that performed at them that I could find.
 
 ### My Process
 
