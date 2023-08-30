@@ -43,9 +43,9 @@ def create_database():
         SELECT * FROM shows
     '''
     c.execute(select_all_shows_query)
-    all_shows = c.fetchall()
+    '''all_shows = c.fetchall()
     for show in all_shows:
-        print(show)
+        print(show)'''
 
     # Commit changes and close the connection
     conn.commit()
@@ -123,17 +123,42 @@ def fill_data():
         SELECT * FROM shows
     '''
     c.execute(select_all_shows_query)
-    all_shows = c.fetchall()
+    '''all_shows = c.fetchall()
     for show in all_shows:
-        print(show)
+        print(show)'''
 
     # Commit changes and close the connection
     conn.commit()
     conn.close()
 
+def my_view():
+    conn = sqlite3.connect("MyArchive.sqlite")
+    c = conn.cursor()
+
+    my_view_query = '''
+        CREATE VIEW IF NOT EXISTS my_view AS
+        SELECT Date, Venue, Headliner, Host, Feature, Appearances
+        FROM shows
+        WHERE Appearances LIKE '%Aryan Shukla%'
+        '''
+
+    c.execute(my_view_query)
+
+    select_my_view_query = '''
+        SELECT * FROM my_view
+    '''
+    c.execute(select_my_view_query)
+    my_view = c.fetchall()
+    for show in my_view:
+        print(show)
+
+    conn.commit()
+    conn.close()
+
+
 if __name__ == "__main__":
     create_database()
     fill_data()
-    #look up crud
+    my_view()
 
 
